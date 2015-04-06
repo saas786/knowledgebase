@@ -1,0 +1,2 @@
+# knowledgebase
+A knowledgebase plugin.
