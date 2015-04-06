@@ -19,10 +19,6 @@ final class KBP_Knowledgebase_Admin {
 	 */
 	public function __construct() {
 
-		/* Load post meta boxes on the post editing screen. */
-		add_action( 'load-post.php',     array( $this, 'load_post_meta_boxes' ) );
-		add_action( 'load-post-new.php', array( $this, 'load_post_meta_boxes' ) );
-
 		/* Only run our customization on the 'edit.php' page in the admin. */
 		add_action( 'load-edit.php', array( $this, 'load_edit' ) );
 
@@ -78,14 +74,6 @@ final class KBP_Knowledgebase_Admin {
 		}
 
 		return $vars;
-	}
-
-	/**
-	 * Loads custom meta boxes on the "add new menu item" and "edit menu item" screens.
-	 *
-	 */
-	public function load_post_meta_boxes() {
-		require_once( KNOWLEDGEBASE_DIR . 'admin/class-knowledgebase-post-meta-boxes.php' );
 	}
 
 	/**
