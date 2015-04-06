@@ -6,7 +6,7 @@
  */
 
 /* Register custom post types on the 'init' hook. */
-add_action( 'init', 'knowledgebase_register_post_types' );
+add_action( 'init', 'kbp_knowledgebase_register_post_types' );
 
 /* Filter post updated messages for custom post types. */
 add_filter( 'post_updated_messages', 'kbp_post_updated_messages' );
@@ -18,7 +18,7 @@ add_filter( 'enter_title_here', 'kbp_enter_title_here', 10, 2 );
  * Registers post types needed by the plugin.
  *
  */
-function knowledgebase_register_post_types() {
+function kbp_knowledgebase_register_post_types() {
 
 	/* Get plugin settings. */
 	$settings = get_option( 'knowledgebase_settings', kbp_get_default_settings() );
@@ -33,8 +33,8 @@ function knowledgebase_register_post_types() {
 		'show_ui'             => true,
 		'show_in_menu'        => true,
 		'show_in_admin_bar'   => true,
-		'menu_position'       => null,
-		'menu_icon'           => null,
+		'menu_position'       => 12, //null,
+		'menu_icon'           => 'dashicons-lightbulb', //null,
 		'can_export'          => true,
 		'delete_with_user'    => false,
 		'hierarchical'        => false,
@@ -70,7 +70,7 @@ function knowledgebase_register_post_types() {
 		),
 
 		'rewrite' => array(
-			'slug'       => kbp_knowledgebase_menu_base() . '/items',
+			'slug'       => kbp_knowledgebase_menu_base(), // . '/items',
 			'with_front' => false,
 			'pages'      => true,
 			'feeds'      => true,
@@ -92,12 +92,12 @@ function knowledgebase_register_post_types() {
 			'menu_name'          => __( 'Knowledgebase',                   'knowledgebase' ),
 			'name_admin_bar'     => __( 'Knowledgebase Menu Item',         'knowledgebase' ),
 			'all_items'          => __( 'Knowledgebase Items',                   'knowledgebase' ),
-			'add_new'            => __( 'Add Knowledgebase Item',                'knowledgebase' ),
-			'add_new_item'       => __( 'Add New Knowledgebase Item',            'knowledgebase' ),
-			'edit_item'          => __( 'Edit Knowledgebase Item',               'knowledgebase' ),
-			'new_item'           => __( 'New Knowledgebase Item',                'knowledgebase' ),
-			'view_item'          => __( 'View Knowledgebase Item',               'knowledgebase' ),
-			'search_items'       => __( 'Search Knowledgebase Items',            'knowledgebase' ),
+			'add_new'            => __( 'Add Item',                'knowledgebase' ),
+			'add_new_item'       => __( 'Add New Item',            'knowledgebase' ),
+			'edit_item'          => __( 'Edit Item',               'knowledgebase' ),
+			'new_item'           => __( 'New Item',                'knowledgebase' ),
+			'view_item'          => __( 'View Item',               'knowledgebase' ),
+			'search_items'       => __( 'Search Items',            'knowledgebase' ),
 			'not_found'          => __( 'No knowledgebase items found',          'knowledgebase' ),
 			'not_found_in_trash' => __( 'No knowledgebase items found in trash', 'knowledgebase' ),
 

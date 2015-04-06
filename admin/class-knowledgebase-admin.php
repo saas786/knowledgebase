@@ -25,7 +25,6 @@ final class KBP_Knowledgebase_Admin {
 		/* Modify the columns on the "menu items" screen. */
 		add_filter( 'manage_edit-knowledgebase_item_columns',          array( $this, 'edit_knowledgebase_item_columns'            )        );
 		add_filter( 'manage_edit-knowledgebase_item_sortable_columns', array( $this, 'manage_knowledgebase_item_sortable_columns' )        );
-		add_action( 'manage_knowledgebase_item_posts_custom_column',   array( $this, 'manage_knowledgebase_item_columns'          ), 10, 2 );
 	}
 
 	/**
@@ -149,35 +148,6 @@ final class KBP_Knowledgebase_Admin {
 		return $columns;
 	}
 
-	/**
-	 * Add output for custom columns on the "menu items" screen.
-	 *
-	 */
-	public function manage_knowledgebase_item_columns( $column, $post_id ) {
-
-		switch( $column ) {
-
-			case 'price' :
-
-				$price = kbp_get_formatted_menu_item_price( $post_id );
-
-				echo !empty( $price ) ? $price : '&mdash;';
-
-				break;
-
-			case 'thumbnail' :
-
-				$thumb = get_the_post_thumbnail( $post_id, 'knowledgebase-thumbnail' );
-
-				echo !empty( $thumb ) ? $thumb : '&mdash;';
-
-				break;
-
-			/* Just break out of the switch statement for everything else. */
-			default :
-				break;
-		}
-	}
 
 	/**
 	 * Style adjustments for the manage menu items screen, particularly for adjusting the thumbnail

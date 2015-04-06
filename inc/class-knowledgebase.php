@@ -35,7 +35,6 @@ class Knowledgebase {
 		$this->token = 'knowledgebase';
 		$this->version = '0.0.2';
 
-
 		/* Set the constants needed by the plugin. */
 		add_action( 'plugins_loaded', array( $this, 'constants' ), 1 );
 
