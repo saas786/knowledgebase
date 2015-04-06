@@ -88,9 +88,9 @@ function kbp_knowledgebase_register_post_types() {
 
 		'labels' => array(
 			'name'               => __( 'Knowledgebase',                   'knowledgebase' ),
-			'singular_name'      => __( 'Knowledgebase Article',                    'knowledgebase' ),
+			'singular_name'      => __( 'Article',                    'knowledgebase' ),
 			'menu_name'          => __( 'Knowledgebase',                   'knowledgebase' ),
-			'name_admin_bar'     => __( 'Knowledgebase Article',         'knowledgebase' ),
+			'name_admin_bar'     => __( 'Article',         'knowledgebase' ),
 			'all_items'          => __( 'Articles',                   'knowledgebase' ),
 			'add_new'            => __( 'Add Article',                'knowledgebase' ),
 			'add_new_item'       => __( 'Add New Article',            'knowledgebase' ),

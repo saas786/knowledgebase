@@ -9,9 +9,6 @@
 /* Filter the post type archive title. */
 add_filter( 'post_type_archive_title', 'kbp_post_type_archive_title' );
 
-/* Add custom image sizes (for menu listing in admin). */
-add_action( 'init', 'kbp_add_image_sizes' );
-
 /**
  * Returns the default plugin settings.
  *
@@ -40,18 +37,11 @@ function kbp_knowledgebase_base() {
  */
 function kbp_post_type_archive_title( $title ) {
 
-	if ( is_post_type_archive( 'knowledgebase_article' ) ) {
-		$post_type = get_post_type_object( 'knowledgebase_article' );
+	if ( is_post_type_archive( 'knowledgebase' ) ) {
+		$post_type = get_post_type_object( 'knowledgebase' );
 		$title     = isset( $post_type->labels->archive_title ) ? $post_type->labels->archive_title : $title;
 	}
 
 	return $title;
 }
 
-/**
- * Adds a custom image size for viewing in the admin edit posts screen.
- *
- */
-function kbp_add_image_sizes() {
-	add_image_size( 'knowledgebase-thumbnail', 100, 75, true );
-}

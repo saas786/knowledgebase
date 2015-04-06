@@ -76,7 +76,7 @@ function knowledgebase_register_taxonomies() {
 				'manage_terms' => 'manage_knowledgebase',
 				'edit_terms'   => 'manage_knowledgebase',
 				'delete_terms' => 'manage_knowledgebase',
-				'assign_terms' => 'edit_knowledgebase_articles',
+				'assign_terms' => 'edit_knowledgebase',
 			),
 			/* The rewrite handles the URL structure. */
 			'rewrite' => array(

@@ -98,7 +98,7 @@ final class KBP_Knowledgebase_Admin {
 		$columns['cb'] = $post_columns['cb'];
 
 		/* Add custom columns and overwrite the 'title' column. */
-		$columns['title']     = __( 'Knowledgebase Article',      'knowledgebase' );
+		$columns['title']     = __( 'Article',      'knowledgebase' );
 
 		/* Get taxonomies that should appear in the manage posts table. */
 		$taxonomies = get_object_taxonomies( $post_type, 'objects' );
