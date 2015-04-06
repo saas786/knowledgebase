@@ -17,9 +17,6 @@ add_filter( 'enter_title_here', 'kbp_enter_title_here', 10, 2 );
 /**
  * Registers post types needed by the plugin.
  *
- * @since  1.0.0
- * @access public
- * @return void
  */
 function knowledgebase_register_post_types() {
 
@@ -116,25 +113,16 @@ function knowledgebase_register_post_types() {
 /**
  * Custom "enter title here" text.
  *
- * @since  1.0.0
- * @access public
- * @param  string  $title
- * @param  object  $post
- * @return string
  */
 function kbp_enter_title_here( $title, $post ) {
 
-	if ( 'knowledgebase_item' === $post->post_type )
+	if ( 'knowledgebase_item' === $post->post_type ) {
 		$title = __( 'Enter Knowledgebase item name', 'knowledgebase' );
+	}
 
 	return $title;
 }
 
-/**
- * @since  1.0.0
- * @access public
- * @return void
- */
 function kbp_post_updated_messages( $messages ) {
 	global $post, $post_ID;
 

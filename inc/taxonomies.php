@@ -11,9 +11,6 @@ add_action( 'init', 'knowledgebase_register_taxonomies' );
 /**
  * Register taxonomies for the plugin.
  *
- * @since  1.0.0
- * @access public
- * @return void.
  */
 function knowledgebase_register_taxonomies() {
 
@@ -46,7 +43,7 @@ function knowledgebase_register_taxonomies() {
 		'labels' => array(
 			'name'                       => __( 'Tags',                           'knowledgebase' ),
 			'singular_name'              => __( 'Tag',                            'knowledgebase' ),
-			'menu_name'                  => __( 'Knowledgebase Tags',                      'knowledgebase' ),
+			'menu_name'                  => __( 'Knowledgebase Tags',             'knowledgebase' ),
 			'name_admin_bar'             => __( 'Tags',                           'knowledgebase' ),
 			'search_items'               => __( 'Search Tags',                    'knowledgebase' ),
 			'popular_items'              => __( 'Popular Tags',                   'knowledgebase' ),

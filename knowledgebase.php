@@ -3,8 +3,8 @@
 /**
  * Plugin Name: Knowledgebase
  * Plugin URI: http://hybopressthemes.com/plugins/knowledgebase
- * Description: A base plugin for building knowledgebase Web sites. This plugin allows you to manage a basic knowledgebase. The purpose of it is to handle knowledgebase sites while allowing for extension plugins to add more complex features.
- * Version: 0.0.1
+ * Description: A base plugin for building knowledgebase Web sites.
+ * Version: 0.0.2
  * Author: Syed Abrar Ahmed Shah
  * Author URI: http://hybopressthemes.com
  * Text Domain: knowledgebase
@@ -35,7 +35,7 @@ if ( !defined('ABSPATH') ) {
     exit();
 }
 
-require_once( 'classes/class-knowledgebase.php' );
+require_once( 'inc/class-knowledgebase.php' );
 
 function Knowledgebase_get_instance() {
 		return Knowledgebase::get_instance( __FILE__ );

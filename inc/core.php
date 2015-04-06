@@ -15,9 +15,6 @@ add_action( 'init', 'kbp_add_image_sizes' );
 /**
  * Returns the default plugin settings.
  *
- * @since  1.0.0
- * @access public
- * @return array
  */
 function kbp_get_default_settings() {
 
@@ -32,9 +29,6 @@ function kbp_get_default_settings() {
 /**
  * Defines the base URL slug for the "knowledgebase" section of the Web site.
  *
- * @since  1.0.0
- * @access public
- * @return string
  */
 function kbp_knowledgebase_menu_base() {
 	return apply_filters( 'kbp_knowledgebase_menu_base', 'knowledgebase' );
@@ -43,10 +37,6 @@ function kbp_knowledgebase_menu_base() {
 /**
  * Filters 'post_type_archive_title' to use our custom 'archive_title' label.
  *
- * @since  1.0.0
- * @access public
- * @param  string  $title
- * @return string
  */
 function kbp_post_type_archive_title( $title ) {
 
@@ -61,9 +51,6 @@ function kbp_post_type_archive_title( $title ) {
 /**
  * Adds a custom image size for viewing in the admin edit posts screen.
  *
- * @since  1.0.0
- * @access public
- * @return void
  */
 function kbp_add_image_sizes() {
 	add_image_size( 'knowledgebase-thumbnail', 100, 75, true );
