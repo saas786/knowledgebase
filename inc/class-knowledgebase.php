@@ -1,6 +1,6 @@
 <?php
-
-final class Knowledgebase {
+//final
+class Knowledgebase {
 
 	/* --------------------------------------------*
 	 * Constants
@@ -33,7 +33,7 @@ final class Knowledgebase {
 	function __construct( $file ) {
 		$this->file = $file;
 		$this->token = 'knowledgebase';
-		$this->version = '0.0.2';
+		$this->version = '0.0.3';
 
 		/* Set the constants needed by the plugin. */
 		add_action( 'plugins_loaded', array( $this, 'constants' ), 1 );
@@ -117,8 +117,8 @@ final class Knowledgebase {
 		/* If the administrator role exists, add required capabilities for the plugin. */
 		if ( !empty( $role ) ) {
 			$role->add_cap( 'manage_knowledgebase' );
-			$role->add_cap( 'create_knowledgebase_articles' );
-			$role->add_cap( 'edit_knowledgebase_articles' );
+			$role->add_cap( 'create_knowledgebase' );
+			$role->add_cap( 'edit_knowledgebase' );
 		}
 	}
 

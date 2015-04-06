@@ -23,12 +23,12 @@ function knowledgebase_register_taxonomies() {
 		'hierarchical'      => false,
 		'query_var'         => 'knowledgebase_tag',
 
-		/* Only 2 caps are needed: 'manage_knowledgebase' and 'edit_knowledgebase_articles'. */
+		/* Only 2 caps are needed: 'manage_knowledgebase' and 'edit_knowledgebase'. */
 		'capabilities' => array(
 			'manage_terms' => 'manage_knowledgebase',
 			'edit_terms'   => 'manage_knowledgebase',
 			'delete_terms' => 'manage_knowledgebase',
-			'assign_terms' => 'edit_knowledgebase_articles',
+			'assign_terms' => 'edit_knowledgebase',
 		),
 
 		/* The rewrite handles the URL structure. */
@@ -60,7 +60,7 @@ function knowledgebase_register_taxonomies() {
 	);
 
 	/* Register the Knowledgebase Tag taxonomy. */
-	register_taxonomy( 'knowledgebase_tag', array( 'knowledgebase_article' ), $tag_args );
+	register_taxonomy( 'knowledgebase_tag', array( 'knowledgebase' ), $tag_args );
 
 	//Register Categories
 	$category_args = array(
@@ -109,5 +109,5 @@ function knowledgebase_register_taxonomies() {
 		);
 
 	/* Register the Knowledgebase Category taxonomy. */
-	register_taxonomy( 'knowledgebase_category', array( 'knowledgebase_article' ), $category_args );
+	register_taxonomy( 'knowledgebase_category', array( 'knowledgebase' ), $category_args );
 }

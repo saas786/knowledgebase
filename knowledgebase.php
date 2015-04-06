@@ -4,7 +4,7 @@
  * Plugin Name: Knowledgebase
  * Plugin URI: http://hybopressthemes.com/plugins/knowledgebase
  * Description: A base plugin for building knowledgebase Web sites.
- * Version: 0.0.2
+ * Version: 0.0.3
  * Author: Syed Abrar Ahmed Shah
  * Author URI: http://hybopressthemes.com
  * Text Domain: knowledgebase
@@ -22,7 +22,7 @@
  * to the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
  *
  * @package    Knowledgebase
- * @version    0.0.1
+ * @version    0.0.3
  * @author     Syed Abrar Ahmed Shah <syed@hybopressthemes.com>
  * @copyright  Copyright (c) 2015, Syed Abrar Ahmed Shah
  * @link       http://hybopressthemes.com/plugins/knowledgebase

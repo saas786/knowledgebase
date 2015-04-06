@@ -19,8 +19,8 @@ add_action( 'init', 'kbp_add_image_sizes' );
 function kbp_get_default_settings() {
 
 	$settings = array(
-		'knowledgebase_article_archive_title' => __( 'Knowledgebase',            'knowledgebase' ),
-		'knowledgebase_article_description'   => __( 'Got questions? You’re in the right place!.', 'knowledgebase' )
+		'knowledgebase_archive_title' => __( 'Knowledgebase',            'knowledgebase' ),
+		'knowledgebase_description'   => __( 'Got questions? You’re in the right place!.', 'knowledgebase' )
 	);
 
 	return $settings;

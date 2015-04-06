@@ -23,7 +23,7 @@ final class KBP_Knowledgebase_Admin {
 		add_action( 'load-edit.php', array( $this, 'load_edit' ) );
 
 		/* Modify the columns on the "knowledgebase articles" screen. */
-		add_filter( 'manage_edit-knowledgebase_article_columns',          array( $this, 'edit_knowledgebase_article_columns'            )        );
+		add_filter( 'manage_edit-knowledgebase_columns',          array( $this, 'edit_knowledgebase_columns'            )        );
 	}
 
 	/**
@@ -33,7 +33,7 @@ final class KBP_Knowledgebase_Admin {
 	public function load_edit() {
 		$screen = get_current_screen();
 
-		if ( !empty( $screen->post_type ) && 'knowledgebase_article' === $screen->post_type ) {
+		if ( !empty( $screen->post_type ) && 'knowledgebase' === $screen->post_type ) {
 			add_filter( 'request',               array( $this, 'request'       ) );
 			add_action( 'restrict_manage_posts', array( $this, 'tags_dropdown' ) );
 			add_action( 'admin_head',            array( $this, 'print_styles'  ) );
@@ -87,7 +87,7 @@ final class KBP_Knowledgebase_Admin {
 	 * Filters the columns on the "knowledgebase articles" screen.
 	 *
 	 */
-	public function edit_knowledgebase_article_columns( $post_columns ) {
+	public function edit_knowledgebase_columns( $post_columns ) {
 
 		$screen     = get_current_screen();
 		$post_type  = $screen->post_type;
