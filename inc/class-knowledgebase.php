@@ -1,6 +1,6 @@
 <?php
 
-class Knowledgebase {
+final class Knowledgebase {
 
 	/* --------------------------------------------*
 	 * Constants
@@ -83,9 +83,6 @@ class Knowledgebase {
 	/**
 	 * Loads files from the '/inc' folder.
 	 *
-	 * @since  1.0.0
-	 * @access public
-	 * @return void
 	 */
 	function includes() {
 
@@ -120,8 +117,8 @@ class Knowledgebase {
 		/* If the administrator role exists, add required capabilities for the plugin. */
 		if ( !empty( $role ) ) {
 			$role->add_cap( 'manage_knowledgebase' );
-			$role->add_cap( 'create_knowledgebase_items' );
-			$role->add_cap( 'edit_knowledgebase_items' );
+			$role->add_cap( 'create_knowledgebase_articles' );
+			$role->add_cap( 'edit_knowledgebase_articles' );
 		}
 	}
 

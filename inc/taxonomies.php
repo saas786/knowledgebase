@@ -23,17 +23,17 @@ function knowledgebase_register_taxonomies() {
 		'hierarchical'      => false,
 		'query_var'         => 'knowledgebase_tag',
 
-		/* Only 2 caps are needed: 'manage_knowledgebase' and 'edit_knowledgebase_items'. */
+		/* Only 2 caps are needed: 'manage_knowledgebase' and 'edit_knowledgebase_articles'. */
 		'capabilities' => array(
 			'manage_terms' => 'manage_knowledgebase',
 			'edit_terms'   => 'manage_knowledgebase',
 			'delete_terms' => 'manage_knowledgebase',
-			'assign_terms' => 'edit_knowledgebase_items',
+			'assign_terms' => 'edit_knowledgebase_articles',
 		),
 
 		/* The rewrite handles the URL structure. */
 		'rewrite' => array(
-			'slug'         => kbp_knowledgebase_menu_base() . '/tags',
+			'slug'         => kbp_knowledgebase_base() . '/tags',
 			'with_front'   => false,
 			'hierarchical' => false,
 			'ep_mask'      => EP_NONE
@@ -60,7 +60,7 @@ function knowledgebase_register_taxonomies() {
 	);
 
 	/* Register the Knowledgebase Tag taxonomy. */
-	register_taxonomy( 'knowledgebase_tag', array( 'knowledgebase_item' ), $tag_args );
+	register_taxonomy( 'knowledgebase_tag', array( 'knowledgebase_article' ), $tag_args );
 
 	//Register Categories
 	$category_args = array(
@@ -76,11 +76,11 @@ function knowledgebase_register_taxonomies() {
 				'manage_terms' => 'manage_knowledgebase',
 				'edit_terms'   => 'manage_knowledgebase',
 				'delete_terms' => 'manage_knowledgebase',
-				'assign_terms' => 'edit_knowledgebase_items',
+				'assign_terms' => 'edit_knowledgebase_articles',
 			),
 			/* The rewrite handles the URL structure. */
 			'rewrite' => array(
-				'slug'         => kbp_knowledgebase_menu_base() . '/category',
+				'slug'         => kbp_knowledgebase_base() . '/category',
 				'with_front'   => false,
 				'hierarchical' => true,
 				'ep_mask'      => EP_NONE
@@ -109,5 +109,5 @@ function knowledgebase_register_taxonomies() {
 		);
 
 	/* Register the Knowledgebase Category taxonomy. */
-	register_taxonomy( 'knowledgebase_category', array( 'knowledgebase_item' ), $category_args );
+	register_taxonomy( 'knowledgebase_category', array( 'knowledgebase_article' ), $category_args );
 }

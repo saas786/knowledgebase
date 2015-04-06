@@ -25,7 +25,7 @@ function kbp_knowledgebase_register_post_types() {
 
 	/* Set up the arguments for the post type. */
 	$args = array(
-		'description'         => $settings['knowledgebase_item_description'],
+		'description'         => $settings['knowledgebase_article_description'],
 		'public'              => true,
 		'publicly_queryable'  => true,
 		'exclude_from_search' => false,
@@ -38,23 +38,23 @@ function kbp_knowledgebase_register_post_types() {
 		'can_export'          => true,
 		'delete_with_user'    => false,
 		'hierarchical'        => false,
-		'has_archive'         => kbp_knowledgebase_menu_base(),
-		'query_var'           => 'knowledgebase_item',
-		'capability_type'     => 'knowledgebase_item',
+		'has_archive'         => kbp_knowledgebase_base(),
+		'query_var'           => 'knowledgebase_article',
+		'capability_type'     => 'knowledgebase_article',
 		'map_meta_cap'        => true,
 
 		'capabilities' => array(
 
 			// meta caps (don't assign these to roles)
-			'edit_post'              => 'edit_knowledgebase_item',
-			'read_post'              => 'read_knowledgebase_item',
-			'delete_post'            => 'delete_knowledgebase_item',
+			'edit_post'              => 'edit_knowledgebase_article',
+			'read_post'              => 'read_knowledgebase_article',
+			'delete_post'            => 'delete_knowledgebase_article',
 
 			// primitive/meta caps
-			'create_posts'           => 'create_knowledgebase_items',
+			'create_posts'           => 'create_knowledgebase_articles',
 
 			// primitive caps used outside of map_meta_cap()
-			'edit_posts'             => 'edit_knowledgebase_items',
+			'edit_posts'             => 'edit_knowledgebase_articles',
 			'edit_others_posts'      => 'manage_knowledgebase',
 			'publish_posts'          => 'manage_knowledgebase',
 			'read_private_posts'     => 'read',
@@ -65,12 +65,12 @@ function kbp_knowledgebase_register_post_types() {
 			'delete_private_posts'   => 'manage_knowledgebase',
 			'delete_published_posts' => 'manage_knowledgebase',
 			'delete_others_posts'    => 'manage_knowledgebase',
-			'edit_private_posts'     => 'edit_knowledgebase_items',
-			'edit_published_posts'   => 'edit_knowledgebase_items'
+			'edit_private_posts'     => 'edit_knowledgebase_articles',
+			'edit_published_posts'   => 'edit_knowledgebase_articles'
 		),
 
 		'rewrite' => array(
-			'slug'       => kbp_knowledgebase_menu_base(), // . '/items',
+			'slug'       => kbp_knowledgebase_base(), // . '/articles',
 			'with_front' => false,
 			'pages'      => true,
 			'feeds'      => true,
@@ -87,27 +87,27 @@ function kbp_knowledgebase_register_post_types() {
 		),
 
 		'labels' => array(
-			'name'               => __( 'Knowledgebase Items',                   'knowledgebase' ),
-			'singular_name'      => __( 'Knowledgebase Item',                    'knowledgebase' ),
+			'name'               => __( 'Knowledgebase Articles',                   'knowledgebase' ),
+			'singular_name'      => __( 'Knowledgebase Article',                    'knowledgebase' ),
 			'menu_name'          => __( 'Knowledgebase',                   'knowledgebase' ),
-			'name_admin_bar'     => __( 'Knowledgebase Menu Item',         'knowledgebase' ),
-			'all_items'          => __( 'Knowledgebase Items',                   'knowledgebase' ),
-			'add_new'            => __( 'Add Item',                'knowledgebase' ),
-			'add_new_item'       => __( 'Add New Item',            'knowledgebase' ),
-			'edit_item'          => __( 'Edit Item',               'knowledgebase' ),
-			'new_item'           => __( 'New Item',                'knowledgebase' ),
-			'view_item'          => __( 'View Item',               'knowledgebase' ),
-			'search_items'       => __( 'Search Items',            'knowledgebase' ),
-			'not_found'          => __( 'No knowledgebase items found',          'knowledgebase' ),
-			'not_found_in_trash' => __( 'No knowledgebase items found in trash', 'knowledgebase' ),
+			'name_admin_bar'     => __( 'Knowledgebase Article',         'knowledgebase' ),
+			'all_items'          => __( 'Knowledgebase Articles',                   'knowledgebase' ),
+			'add_new'            => __( 'Add Article',                'knowledgebase' ),
+			'add_new_item'       => __( 'Add New Article',            'knowledgebase' ),
+			'edit_item'          => __( 'Edit Article',               'knowledgebase' ),
+			'new_item'           => __( 'New Article',                'knowledgebase' ),
+			'view_item'          => __( 'View Article',               'knowledgebase' ),
+			'search_items'       => __( 'Search Articles',            'knowledgebase' ),
+			'not_found'          => __( 'No knowledgebase articles found',          'knowledgebase' ),
+			'not_found_in_trash' => __( 'No knowledgebase articles found in trash', 'knowledgebase' ),
 
 			/* Custom archive label.  Must filter 'post_type_archive_title' to use. */
-			'archive_title'      => $settings['knowledgebase_item_archive_title'],
+			'archive_title'      => $settings['knowledgebase_article_archive_title'],
 		)
 	);
 
 	/* Register the post type. */
-	register_post_type( 'knowledgebase_item', $args );
+	register_post_type( 'knowledgebase_article', $args );
 }
 
 /**
@@ -116,8 +116,8 @@ function kbp_knowledgebase_register_post_types() {
  */
 function kbp_enter_title_here( $title, $post ) {
 
-	if ( 'knowledgebase_item' === $post->post_type ) {
-		$title = __( 'Enter Knowledgebase item name', 'knowledgebase' );
+	if ( 'knowledgebase_article' === $post->post_type ) {
+		$title = __( 'Enter Knowledgebase article name', 'knowledgebase' );
 	}
 
 	return $title;
@@ -126,18 +126,18 @@ function kbp_enter_title_here( $title, $post ) {
 function kbp_post_updated_messages( $messages ) {
 	global $post, $post_ID;
 
-	$messages['knowledgebase_item'] = array(
+	$messages['knowledgebase_article'] = array(
 		 0 => '', // Unused. Messages start at index 1.
-		 1 => sprintf( __( 'Knowledgebase item updated. <a href="%s">View knowledgebase item</a>', 'knowledgebase' ), esc_url( get_permalink( $post_ID ) ) ),
+		 1 => sprintf( __( 'Knowledgebase article updated. <a href="%s">View knowledgebase article</a>', 'knowledgebase' ), esc_url( get_permalink( $post_ID ) ) ),
 		 2 => '',
 		 3 => '',
-		 4 => __( 'Knowledgebase item updated.', 'knowledgebase' ),
-		 5 => isset( $_GET['revision'] ) ? sprintf( __( 'Knowledgebase item restored to revision from %s', 'knowledgebase' ), wp_post_revision_title( (int) $_GET['revision'], false ) ) : false,
-		 6 => sprintf( __( 'Knowledgebase item published. <a href="%s">View knowledgebase item</a>', 'knowledgebase' ), esc_url( get_permalink( $post_ID ) ) ),
-		 7 => __( 'Knowledgebase item saved.', 'knowledgebase' ),
-		 8 => sprintf( __( 'Knowledgebase item submitted. <a target="_blank" href="%s">Preview knowledgebase item</a>', 'knowledgebase' ), esc_url( add_query_arg( 'preview', 'true', get_permalink( $post_ID ) ) ) ),
-		 9 => sprintf( __( 'Knowledgebase item scheduled for: <strong>%1$s</strong>. <a target="_blank" href="%2$s">Preview knowledgebase item</a>', 'knowledgebase' ), date_i18n( __( 'M j, Y @ G:i', 'knowledgebase' ), strtotime( $post->post_date ) ), esc_url( get_permalink( $post_ID ) ) ),
-		10 => sprintf( __( 'Knowledgebase item draft updated. <a target="_blank" href="%s">Preview knowledgebase item</a>', 'knowledgebase' ), esc_url( add_query_arg( 'preview', 'true', get_permalink( $post_ID ) ) ) ),
+		 4 => __( 'Knowledgebase article updated.', 'knowledgebase' ),
+		 5 => isset( $_GET['revision'] ) ? sprintf( __( 'Knowledgebase article restored to revision from %s', 'knowledgebase' ), wp_post_revision_title( (int) $_GET['revision'], false ) ) : false,
+		 6 => sprintf( __( 'Knowledgebase article published. <a href="%s">View knowledgebase article</a>', 'knowledgebase' ), esc_url( get_permalink( $post_ID ) ) ),
+		 7 => __( 'Knowledgebase article saved.', 'knowledgebase' ),
+		 8 => sprintf( __( 'Knowledgebase article submitted. <a target="_blank" href="%s">Preview knowledgebase article</a>', 'knowledgebase' ), esc_url( add_query_arg( 'preview', 'true', get_permalink( $post_ID ) ) ) ),
+		 9 => sprintf( __( 'Knowledgebase article scheduled for: <strong>%1$s</strong>. <a target="_blank" href="%2$s">Preview knowledgebase article</a>', 'knowledgebase' ), date_i18n( __( 'M j, Y @ G:i', 'knowledgebase' ), strtotime( $post->post_date ) ), esc_url( get_permalink( $post_ID ) ) ),
+		10 => sprintf( __( 'Knowledgebase article draft updated. <a target="_blank" href="%s">Preview knowledgebase article</a>', 'knowledgebase' ), esc_url( add_query_arg( 'preview', 'true', get_permalink( $post_ID ) ) ) ),
 	);
 
 	return $messages;

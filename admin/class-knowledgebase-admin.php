@@ -22,19 +22,18 @@ final class KBP_Knowledgebase_Admin {
 		/* Only run our customization on the 'edit.php' page in the admin. */
 		add_action( 'load-edit.php', array( $this, 'load_edit' ) );
 
-		/* Modify the columns on the "menu items" screen. */
-		add_filter( 'manage_edit-knowledgebase_item_columns',          array( $this, 'edit_knowledgebase_item_columns'            )        );
-		add_filter( 'manage_edit-knowledgebase_item_sortable_columns', array( $this, 'manage_knowledgebase_item_sortable_columns' )        );
+		/* Modify the columns on the "knowledgebase articles" screen. */
+		add_filter( 'manage_edit-knowledgebase_article_columns',          array( $this, 'edit_knowledgebase_article_columns'            )        );
 	}
 
 	/**
-	 * Adds a custom filter on 'request' when viewing the edit menu items screen in the admin.
+	 * Adds a custom filter on 'request' when viewing the edit knowledge articles screen in the admin.
 	 *
 	 */
 	public function load_edit() {
 		$screen = get_current_screen();
 
-		if ( !empty( $screen->post_type ) && 'knowledgebase_item' === $screen->post_type ) {
+		if ( !empty( $screen->post_type ) && 'knowledgebase_article' === $screen->post_type ) {
 			add_filter( 'request',               array( $this, 'request'       ) );
 			add_action( 'restrict_manage_posts', array( $this, 'tags_dropdown' ) );
 			add_action( 'admin_head',            array( $this, 'print_styles'  ) );
@@ -43,7 +42,7 @@ final class KBP_Knowledgebase_Admin {
 
 	/**
 	 * Filter on the 'request' hook to change the 'order' and 'orderby' query variables when
-	 * viewing the "edit menu items" screen in the admin.  This is to order the menu items
+	 * viewing the "edit knowledgebase articles" screen in the admin.  This is to order the knowledgebase articles
 	 * alphabetically.
 	 *
 	 */
@@ -60,23 +59,11 @@ final class KBP_Knowledgebase_Admin {
 			);
 		}
 
-		/* Ordering when the user chooses to sort by price. */
-		elseif ( isset( $vars['orderby'] ) && '_knowledgebase_item_price' === $vars['orderby'] ) {
-
-			$vars = array_merge(
-				$vars,
-				array(
-					'orderby'  => 'meta_value_num',
-					'meta_key' => '_knowledgebase_item_price'
-				)
-			);
-		}
-
 		return $vars;
 	}
 
 	/**
-	 * Renders a knowledgebase tags dropdown on the "menu items" screen table nav.
+	 * Renders a knowledgebase tags dropdown on the "knowledgebase articles" screen table nav.
 	 *
 	 */
 	public function tags_dropdown() {
@@ -97,10 +84,10 @@ final class KBP_Knowledgebase_Admin {
 	}
 
 	/**
-	 * Filters the columns on the "menu items" screen.
+	 * Filters the columns on the "knowledgebase articles" screen.
 	 *
 	 */
-	public function edit_knowledgebase_item_columns( $post_columns ) {
+	public function edit_knowledgebase_article_columns( $post_columns ) {
 
 		$screen     = get_current_screen();
 		$post_type  = $screen->post_type;
@@ -111,9 +98,7 @@ final class KBP_Knowledgebase_Admin {
 		$columns['cb'] = $post_columns['cb'];
 
 		/* Add custom columns and overwrite the 'title' column. */
-		$columns['thumbnail'] = '';
-		$columns['title']     = __( 'Knowledgebase Item',      'knowledgebase' );
-		$columns['price']     = __( 'Price',          'knowledgebase' );
+		$columns['title']     = __( 'Knowledgebase Article',      'knowledgebase' );
 
 		/* Get taxonomies that should appear in the manage posts table. */
 		$taxonomies = get_object_taxonomies( $post_type, 'objects' );
@@ -138,19 +123,7 @@ final class KBP_Knowledgebase_Admin {
 	}
 
 	/**
-	 * Adds the 'price' column to the array of sortable columns.
-	 *
-	 */
-	public function manage_knowledgebase_item_sortable_columns( $columns ) {
-
-		$columns['price'] = array( '_knowledgebase_item_price', true );
-
-		return $columns;
-	}
-
-
-	/**
-	 * Style adjustments for the manage menu items screen, particularly for adjusting the thumbnail
+	 * Style adjustments for the manage knowledgebase articles screen, particularly for adjusting the thumbnail
 	 * column in the table to make sure it doesn't take up too much space.
 	 *
 	 */

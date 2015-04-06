@@ -19,8 +19,8 @@ add_action( 'init', 'kbp_add_image_sizes' );
 function kbp_get_default_settings() {
 
 	$settings = array(
-		'knowledgebase_item_archive_title' => __( 'Knowledgebase',            'knowledgebase' ),
-		'knowledgebase_item_description'   => __( 'Got questions? You’re in the right place!.', 'knowledgebase' )
+		'knowledgebase_article_archive_title' => __( 'Knowledgebase',            'knowledgebase' ),
+		'knowledgebase_article_description'   => __( 'Got questions? You’re in the right place!.', 'knowledgebase' )
 	);
 
 	return $settings;
@@ -30,8 +30,8 @@ function kbp_get_default_settings() {
  * Defines the base URL slug for the "knowledgebase" section of the Web site.
  *
  */
-function kbp_knowledgebase_menu_base() {
-	return apply_filters( 'kbp_knowledgebase_menu_base', 'knowledgebase' );
+function kbp_knowledgebase_base() {
+	return apply_filters( 'kbp_knowledgebase_base', 'knowledgebase' );
 }
 
 /**
@@ -40,8 +40,8 @@ function kbp_knowledgebase_menu_base() {
  */
 function kbp_post_type_archive_title( $title ) {
 
-	if ( is_post_type_archive( 'knowledgebase_item' ) ) {
-		$post_type = get_post_type_object( 'knowledgebase_item' );
+	if ( is_post_type_archive( 'knowledgebase_article' ) ) {
+		$post_type = get_post_type_object( 'knowledgebase_article' );
 		$title     = isset( $post_type->labels->archive_title ) ? $post_type->labels->archive_title : $title;
 	}
 

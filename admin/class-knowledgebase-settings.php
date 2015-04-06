@@ -1,6 +1,6 @@
 <?php
 /**
- * Handles custom post meta boxes for the 'knowledgebase_item' post type.
+ * Handles custom post meta boxes for the 'knowledgebase_article' post type.
  *
  */
 
@@ -39,7 +39,7 @@ final class KBP_knowledgebase_Settings {
 	public function admin_menu() {
 
 		$this->settings_page = add_submenu_page(
-			'edit.php?post_type=knowledgebase_item',
+			'edit.php?post_type=knowledgebase_article',
 			__( 'Knowledgebase Settings', 'knowledgebase' ),
 			__( 'Settings',            'knowledgebase' ),
 			apply_filters( 'knowledgebase_settings_capability', 'manage_options' ),
@@ -101,11 +101,11 @@ final class KBP_knowledgebase_Settings {
 	 */
 	function validate_settings( $settings ) {
 
-		$settings['knowledgebase_item_archive_title'] = strip_tags( $settings['knowledgebase_item_archive_title'] );
+		$settings['knowledgebase_article_archive_title'] = strip_tags( $settings['knowledgebase_article_archive_title'] );
 
 		/* Kill evil scripts. */
 		if ( !current_user_can( 'unfiltered_html' ) ) {
-			$settings['knowledgebase_item_description'] = stripslashes( wp_filter_post_kses( addslashes( $settings['knowledgebase_item_description'] ) ) );
+			$settings['knowledgebase_article_description'] = stripslashes( wp_filter_post_kses( addslashes( $settings['knowledgebase_article_description'] ) ) );
 		}
 
 		/* Return the validated/sanitized settings. */
@@ -119,7 +119,7 @@ final class KBP_knowledgebase_Settings {
 	public function section_menu() { ?>
 
 		<p class="description">
-			<?php printf( __( "Your knowledgebase's is located at %s.", 'knowledgebase' ), '<a href="' . get_post_type_archive_link( 'knowledgebase_item' ) . '"><code>' . get_post_type_archive_link( 'knowledgebase_item' ) . '</code></a>' ); ?>
+			<?php printf( __( "Your knowledgebase's is located at %s.", 'knowledgebase' ), '<a href="' . get_post_type_archive_link( 'knowledgebase_article' ) . '"><code>' . get_post_type_archive_link( 'knowledgebase_article' ) . '</code></a>' ); ?>
 		</p>
 	<?php }
 
@@ -130,7 +130,7 @@ final class KBP_knowledgebase_Settings {
 	public function field_menu_title() { ?>
 
 		<p>
-			<input type="text" class="regular-text" name="knowledgebase_settings[knowledgebase_item_archive_title]" id="knowledgebase_settings-knowledgebase_item_archive_title" value="<?php echo esc_attr( $this->settings['knowledgebase_item_archive_title'] ); ?>" />
+			<input type="text" class="regular-text" name="knowledgebase_settings[knowledgebase_article_archive_title]" id="knowledgebase_settings-knowledgebase_article_archive_title" value="<?php echo esc_attr( $this->settings['knowledgebase_article_archive_title'] ); ?>" />
 		</p>
 	<?php }
 
@@ -141,7 +141,7 @@ final class KBP_knowledgebase_Settings {
 	public function field_menu_description() { ?>
 
 		<p>
-			<textarea class="large-text" name="knowledgebase_settings[knowledgebase_item_description]" id="knowledgebase_settings-knowledgebase_item_description" rows="4"><?php echo esc_textarea( $this->settings['knowledgebase_item_description'] ); ?></textarea>
+			<textarea class="large-text" name="knowledgebase_settings[knowledgebase_article_description]" id="knowledgebase_settings-knowledgebase_article_description" rows="4"><?php echo esc_textarea( $this->settings['knowledgebase_article_description'] ); ?></textarea>
 			<span class="description"><?php _e( "Custom description for your knowledgebase's. You may use <abbr title='Hypertext Markup Language'>HTML</abbr>. Your theme may or may not display this description.", 'knowledgebase' ); ?></span>
 		</p>
 	<?php }
