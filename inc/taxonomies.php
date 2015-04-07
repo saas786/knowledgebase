@@ -28,7 +28,7 @@ function knowledgebase_register_taxonomies() {
 		'hierarchical'      => true,
 		'query_var'         => 'knowledgebase_category',
 
-		/* Only 2 caps are needed: 'manage_restaurant' and 'edit_restaurant_items'. */
+		/* Only 2 caps are needed: 'manage_knowledgebase' and 'edit_knowledgebase_items'. */
 		'capabilities' => array(
 			'manage_terms' => 'manage_knowledgebase',
 			'edit_terms'   => 'manage_knowledgebase',
@@ -75,7 +75,7 @@ function knowledgebase_register_taxonomies() {
 		'hierarchical'      => false,
 		'query_var'         => 'knowledgebase_tag',
 
-		/* Only 2 caps are needed: 'manage_restaurant' and 'edit_restaurant_items'. */
+		/* Only 2 caps are needed: 'manage_knowledgebase' and 'edit_knowledgebase_items'. */
 		'capabilities' => array(
 			'manage_terms' => 'manage_knowledgebase',
 			'edit_terms'   => 'manage_knowledgebase',

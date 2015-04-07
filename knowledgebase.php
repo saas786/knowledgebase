@@ -35,7 +35,7 @@ if ( !defined('ABSPATH') ) {
 }
 
 /**
- * Sets up and initializes the Restaurant plugin.
+ * Sets up and initializes the Knowledgebase plugin.
  *
  * @since  0.0.1
  * @access public
@@ -167,8 +167,9 @@ final class Knowledgebase {
 	 */
 	public static function get_instance() {
 
-		if ( !self::$instance )
+		if ( !self::$instance ) {
 			self::$instance = new self;
+		}
 
 		return self::$instance;
 	}

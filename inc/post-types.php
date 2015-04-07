@@ -150,7 +150,7 @@ function kbp_post_updated_messages( $messages ) {
 		 6 => sprintf( __( 'Article published. <a href="%s">View article</a>', 'knowledgebase' ), esc_url( get_permalink( $post_ID ) ) ),
 		 7 => __( 'Article saved.', 'knowledgebase' ),
 		 8 => sprintf( __( 'Article submitted. <a target="_blank" href="%s">Preview article</a>', 'knowledgebase' ), esc_url( add_query_arg( 'preview', 'true', get_permalink( $post_ID ) ) ) ),
-		 9 => sprintf( __( 'Article scheduled for: <strong>%1$s</strong>. <a target="_blank" href="%2$s">Preview article</a>', 'knowledgebase' ), date_i18n( __( 'M j, Y @ G:i', 'restaurant' ), strtotime( $post->post_date ) ), esc_url( get_permalink( $post_ID ) ) ),
+		 9 => sprintf( __( 'Article scheduled for: <strong>%1$s</strong>. <a target="_blank" href="%2$s">Preview article</a>', 'knowledgebase' ), date_i18n( __( 'M j, Y @ G:i', 'knowledgebase' ), strtotime( $post->post_date ) ), esc_url( get_permalink( $post_ID ) ) ),
 		10 => sprintf( __( 'Article draft updated. <a target="_blank" href="%s">Preview article</a>', 'knowledgebase' ), esc_url( add_query_arg( 'preview', 'true', get_permalink( $post_ID ) ) ) ),
 	);
 
