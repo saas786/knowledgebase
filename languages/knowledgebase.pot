@@ -1,0 +1,280 @@
+# Copyright (C) 2015 Syed Abrar Ahmed Shah
+# This file is distributed under the same license as the Knowledgebase package.
+msgid ""
+msgstr ""
+"Project-Id-Version: Knowledgebase 0.0.5\n"
+"Report-Msgid-Bugs-To: SAAS <translations@hybopress.com>\n"
+"POT-Creation-Date: 2015-04-07 07:36:15+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2015-MO-DA HO:MI+ZONE\n"
+"Last-Translator: SAAS <translations@hybopress.com>\n"
+"Language-Team: SAAS <translations@hybopress.com>\n"
+"X-Generator: grunt-wp-i18n 0.4.9\n"
+"X-Poedit-KeywordsList: "
+"__;_e;_x:1,2c;_ex:1,2c;_n:1,2;_nx:1,2,4c;_n_noop:1,2;_nx_noop:1,2,3c;esc_"
+"attr__;esc_html__;esc_attr_e;esc_html_e;esc_attr_x:1,2c;esc_html_x:1,2c;\n"
+"Language: en\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-Country: United States\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-Basepath: ../\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-Bookmarks: \n"
+"X-Textdomain-Support: yes\n"
+
+#: admin/class-knowledgebase-admin.php:95
+msgid "View all tags"
+msgstr ""
+
+#: admin/class-knowledgebase-admin.php:123
+msgid "Article"
+msgstr ""
+
+#: admin/class-knowledgebase-settings.php:61
+#: admin/class-knowledgebase-settings.php:90
+#: admin/class-knowledgebase-settings.php:185
+msgid "Knowledgebase Settings"
+msgstr ""
+
+#: admin/class-knowledgebase-settings.php:62
+msgid "Settings"
+msgstr ""
+
+#: admin/class-knowledgebase-settings.php:97
+msgid "Knowledgebase Archive Title"
+msgstr ""
+
+#: admin/class-knowledgebase-settings.php:105
+msgid "Knowledgebase Archive Description"
+msgstr ""
+
+#: admin/class-knowledgebase-settings.php:141
+msgid "Your knowledgebase is located at %s."
+msgstr ""
+
+#: admin/class-knowledgebase-settings.php:170
+msgid ""
+"Custom description for your knowledgebase. You may use <abbr "
+"title='Hypertext Markup Language'>HTML</abbr>. Your theme may or may not "
+"display this description."
+msgstr ""
+
+#: admin/class-knowledgebase-settings.php:192
+msgid "Update Settings"
+msgstr ""
+
+#. Plugin Name of the plugin/theme
+msgid "Knowledgebase"
+msgstr ""
+
+#: inc/core.php:25
+msgid "Got questions? You’re in the right place!"
+msgstr ""
+
+#: inc/post-types.php:95
+msgid "Knowledgebase Articles"
+msgstr ""
+
+#: inc/post-types.php:96 inc/post-types.php:98
+msgid "Knowledgebase Article"
+msgstr ""
+
+#: inc/post-types.php:99
+msgid "Articles"
+msgstr ""
+
+#: inc/post-types.php:100
+msgid "Add Article"
+msgstr ""
+
+#: inc/post-types.php:101
+msgid "Add New Article"
+msgstr ""
+
+#: inc/post-types.php:102
+msgid "Edit Article"
+msgstr ""
+
+#: inc/post-types.php:103
+msgid "New Article"
+msgstr ""
+
+#: inc/post-types.php:104
+msgid "View Article"
+msgstr ""
+
+#: inc/post-types.php:105
+msgid "Search Articles"
+msgstr ""
+
+#: inc/post-types.php:106
+msgid "No articles found"
+msgstr ""
+
+#: inc/post-types.php:107
+msgid "No articles found in trash"
+msgstr ""
+
+#: inc/post-types.php:130
+msgid "Enter article title"
+msgstr ""
+
+#: inc/post-types.php:145
+msgid "Article updated. <a href=\"%s\">View article</a>"
+msgstr ""
+
+#: inc/post-types.php:148
+msgid "Article updated."
+msgstr ""
+
+#: inc/post-types.php:149
+msgid "Article restored to revision from %s"
+msgstr ""
+
+#: inc/post-types.php:150
+msgid "Article published. <a href=\"%s\">View article</a>"
+msgstr ""
+
+#: inc/post-types.php:151
+msgid "Article saved."
+msgstr ""
+
+#: inc/post-types.php:152
+msgid "Article submitted. <a target=\"_blank\" href=\"%s\">Preview article</a>"
+msgstr ""
+
+#: inc/post-types.php:153
+msgid ""
+"Article scheduled for: <strong>%1$s</strong>. <a target=\"_blank\" "
+"href=\"%2$s\">Preview article</a>"
+msgstr ""
+
+#: inc/post-types.php:153
+msgid "M j, Y @ G:i"
+msgstr ""
+
+#: inc/post-types.php:154
+msgid "Article draft updated. <a target=\"_blank\" href=\"%s\">Preview article</a>"
+msgstr ""
+
+#: inc/taxonomies.php:49 inc/taxonomies.php:51 inc/taxonomies.php:52
+msgid "Categories"
+msgstr ""
+
+#: inc/taxonomies.php:50
+msgid "Category"
+msgstr ""
+
+#: inc/taxonomies.php:53
+msgid "Search Categories"
+msgstr ""
+
+#: inc/taxonomies.php:54
+msgid "Popular Categories"
+msgstr ""
+
+#: inc/taxonomies.php:55
+msgid "All Categories"
+msgstr ""
+
+#: inc/taxonomies.php:56
+msgid "Edit Category"
+msgstr ""
+
+#: inc/taxonomies.php:57
+msgid "View Category"
+msgstr ""
+
+#: inc/taxonomies.php:58
+msgid "Update Category"
+msgstr ""
+
+#: inc/taxonomies.php:59
+msgid "Add New Category"
+msgstr ""
+
+#: inc/taxonomies.php:60
+msgid "New Category Name"
+msgstr ""
+
+#: inc/taxonomies.php:61
+msgid "Separate categories with commas"
+msgstr ""
+
+#: inc/taxonomies.php:62
+msgid "Add or remove categories"
+msgstr ""
+
+#: inc/taxonomies.php:63
+msgid "Choose from the most used categories"
+msgstr ""
+
+#: inc/taxonomies.php:96 inc/taxonomies.php:98 inc/taxonomies.php:99
+msgid "Tags"
+msgstr ""
+
+#: inc/taxonomies.php:97
+msgid "Tag"
+msgstr ""
+
+#: inc/taxonomies.php:100
+msgid "Search Tags"
+msgstr ""
+
+#: inc/taxonomies.php:101
+msgid "Popular Tags"
+msgstr ""
+
+#: inc/taxonomies.php:102
+msgid "All Tags"
+msgstr ""
+
+#: inc/taxonomies.php:103
+msgid "Edit Tag"
+msgstr ""
+
+#: inc/taxonomies.php:104
+msgid "View Tag"
+msgstr ""
+
+#: inc/taxonomies.php:105
+msgid "Update Tag"
+msgstr ""
+
+#: inc/taxonomies.php:106
+msgid "Add New Tag"
+msgstr ""
+
+#: inc/taxonomies.php:107
+msgid "New Tag Name"
+msgstr ""
+
+#: inc/taxonomies.php:108
+msgid "Separate tags with commas"
+msgstr ""
+
+#: inc/taxonomies.php:109
+msgid "Add or remove tags"
+msgstr ""
+
+#: inc/taxonomies.php:110
+msgid "Choose from the most used tags"
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+msgid "http://hybopressthemes.com/plugins/knowledgebase"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid "A base plugin for building knowledgebase Web sites."
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "Syed Abrar Ahmed Shah"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "http://hybopressthemes.com"
+msgstr ""

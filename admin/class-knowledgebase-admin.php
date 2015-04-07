@@ -1,8 +1,10 @@
 <?php
-
 /**
  * Sets up the admin functionality for the plugin.
  *
+ * @package    Knowledgebase
+ * @subpackage Admin
+ * @since      0.0.1
  */
 
 final class KBP_Knowledgebase_Admin {
@@ -10,30 +12,39 @@ final class KBP_Knowledgebase_Admin {
 	/**
 	 * Holds the instances of this class.
 	 *
+	 * @since  0.0.1
+	 * @access private
+	 * @var    object
 	 */
 	private static $instance;
 
 	/**
 	 * Sets up needed actions/filters for the admin to initialize.
 	 *
+	 * @since  0.0.1
+	 * @access public
+	 * @return void
 	 */
 	public function __construct() {
 
 		/* Only run our customization on the 'edit.php' page in the admin. */
 		add_action( 'load-edit.php', array( $this, 'load_edit' ) );
 
-		/* Modify the columns on the "knowledgebase articles" screen. */
-		add_filter( 'manage_edit-knowledgebase_columns',          array( $this, 'edit_knowledgebase_columns'            )        );
+		/* Modify the columns on the "menu items" screen. */
+		add_filter( 'manage_edit-knowledgebase_item_columns',          array( $this, 'edit_knowledgebase_item_columns'            )        );
 	}
 
 	/**
-	 * Adds a custom filter on 'request' when viewing the edit knowledge articles screen in the admin.
+	 * Adds a custom filter on 'request' when viewing the edit menu items screen in the admin.
 	 *
+	 * @since  0.0.1
+	 * @access public
+	 * @return void
 	 */
 	public function load_edit() {
 		$screen = get_current_screen();
 
-		if ( !empty( $screen->post_type ) && 'knowledgebase' === $screen->post_type ) {
+		if ( !empty( $screen->post_type ) && 'knowledgebase_item' === $screen->post_type ) {
 			add_filter( 'request',               array( $this, 'request'       ) );
 			add_action( 'restrict_manage_posts', array( $this, 'tags_dropdown' ) );
 			add_action( 'admin_head',            array( $this, 'print_styles'  ) );
@@ -42,9 +53,13 @@ final class KBP_Knowledgebase_Admin {
 
 	/**
 	 * Filter on the 'request' hook to change the 'order' and 'orderby' query variables when
-	 * viewing the "edit knowledgebase articles" screen in the admin.  This is to order the knowledgebase articles
+	 * viewing the "edit menu items" screen in the admin.  This is to order the menu items
 	 * alphabetically.
 	 *
+	 * @since  1.0.0
+	 * @access public
+	 * @param  array  $vars
+	 * @return array
 	 */
 	public function request( $vars ) {
 
@@ -63,8 +78,11 @@ final class KBP_Knowledgebase_Admin {
 	}
 
 	/**
-	 * Renders a knowledgebase tags dropdown on the "knowledgebase articles" screen table nav.
+	 * Renders a knowledgebase tags dropdown on the "menu items" screen table nav.
 	 *
+	 * @since  0.0.1
+	 * @access public
+	 * @return void
 	 */
 	public function tags_dropdown() {
 
@@ -84,10 +102,14 @@ final class KBP_Knowledgebase_Admin {
 	}
 
 	/**
-	 * Filters the columns on the "knowledgebase articles" screen.
+	 * Filters the columns on the "menu items" screen.
 	 *
+	 * @since  0.0.1
+	 * @access public
+	 * @param  array  $post_columns
+	 * @return array
 	 */
-	public function edit_knowledgebase_columns( $post_columns ) {
+	public function edit_knowledgebase_item_columns( $post_columns ) {
 
 		$screen     = get_current_screen();
 		$post_type  = $screen->post_type;
@@ -109,31 +131,28 @@ final class KBP_Knowledgebase_Admin {
 		$taxonomies = array_filter( $taxonomies, 'taxonomy_exists' );
 
 		/* Loop through each taxonomy and add it as a column. */
-		foreach ( $taxonomies as $taxonomy ) {
+		foreach ( $taxonomies as $taxonomy )
 			$columns[ 'taxonomy-' . $taxonomy ] = get_taxonomy( $taxonomy )->labels->name;
-		}
 
 		/* Add the comments column. */
-		if ( !empty( $post_columns['comments'] ) ) {
+		if ( !empty( $post_columns['comments'] ) )
 			$columns['comments'] = $post_columns['comments'];
-		}
 
 		/* Return the columns. */
 		return $columns;
 	}
 
+
 	/**
-	 * Style adjustments for the manage knowledgebase articles screen, particularly for adjusting the thumbnail
+	 * Style adjustments for the manage menu items screen, particularly for adjusting the thumbnail
 	 * column in the table to make sure it doesn't take up too much space.
 	 *
+	 * @since  0.0.1
+	 * @access public
+	 * @return void
 	 */
 	public function print_styles( ) { ?>
 		<style type="text/css">
-		.edit-php .wp-list-table td.thumbnail.column-thumbnail,
-		.edit-php .wp-list-table th.manage-column.column-thumbnail {
-			text-align: center;
-			width: 100px;
-		}
 		.edit-php .actions select[name="m"] {
 			display: none;
 		}
@@ -143,12 +162,14 @@ final class KBP_Knowledgebase_Admin {
 	/**
 	 * Returns the instance.
 	 *
+	 * @since  0.0.1
+	 * @access public
+	 * @return object
 	 */
 	public static function get_instance() {
 
-		if ( !self::$instance ) {
+		if ( !self::$instance )
 			self::$instance = new self;
-		}
 
 		return self::$instance;
 	}

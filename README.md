@@ -1,2 +1,1 @@
-# knowledgebase
-A knowledgebase plugin.
+# Knowledge Base
