@@ -149,6 +149,9 @@ final class Knowledgebase {
 	 */
 	function activation() {
 
+		//clear permalinks
+		flush_rewrite_rules();
+
 		$role = get_role( 'administrator' );
 
 		if ( !empty( $role ) ) {
