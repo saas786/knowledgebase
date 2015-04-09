@@ -1,4 +1,5 @@
 <?php
+
 /**
  * File for registering custom post types.
  *
@@ -75,7 +76,7 @@ function knowledgebase_register_post_types() {
 		),
 
 		'rewrite' => array(
-			'slug'       => kbp_knowledgebase_base(), // . '/items',
+			'slug'       => kbp_knowledgebase_base() . '/item',
 			'with_front' => false,
 			'pages'      => true,
 			'feeds'      => true,

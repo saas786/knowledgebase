@@ -1,4 +1,5 @@
 <?php
+
 /**
  * File for registering custom taxonomies.
  *
@@ -38,7 +39,7 @@ function knowledgebase_register_taxonomies() {
 
 		/* The rewrite handles the URL structure. */
 		'rewrite' => array(
-			'slug'         => 'knowledgebase_category', //kbp_knowledgebase_base() . '/category',
+			'slug'         => kbp_knowledgebase_base() . '/category',
 			'with_front'   => false,
 			'hierarchical' => true,
 			'ep_mask'      => EP_NONE
@@ -85,7 +86,7 @@ function knowledgebase_register_taxonomies() {
 
 		/* The rewrite handles the URL structure. */
 		'rewrite' => array(
-			'slug'         => 'knowledgebase_tag', //kbp_knowledgebase_base() . '/tags',
+			'slug'         => kbp_knowledgebase_base() . '/tag',
 			'with_front'   => false,
 			'hierarchical' => false,
 			'ep_mask'      => EP_NONE
