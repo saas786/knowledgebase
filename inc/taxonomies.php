@@ -39,7 +39,7 @@ function knowledgebase_register_taxonomies() {
 
 		/* The rewrite handles the URL structure. */
 		'rewrite' => array(
-			'slug'         => kbp_knowledgebase_base() . '/category',
+			'slug'         => kbp_knowledgebase_base() . '/for',
 			'with_front'   => false,
 			'hierarchical' => true,
 			'ep_mask'      => EP_NONE
