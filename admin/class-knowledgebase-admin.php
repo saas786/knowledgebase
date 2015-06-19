@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Sets up the admin functionality for the plugin.
  *
@@ -30,8 +31,18 @@ final class KBP_Knowledgebase_Admin {
 		/* Only run our customization on the 'edit.php' page in the admin. */
 		add_action( 'load-edit.php', array( $this, 'load_edit' ) );
 
+		/* Edit post editor meta boxes. */
+		add_action( 'do_meta_boxes', array( $this, 'edit_metaboxes' ) );
+
+		/* Order the knowledgebase items by the 'order' attribute in the 'all_items' column view. */
+		add_filter( 'pre_get_posts', array( $this, 'column_order' ) );
+
+
 		/* Modify the columns on the "menu items" screen. */
-		add_filter( 'manage_edit-knowledgebase_item_columns',          array( $this, 'edit_knowledgebase_item_columns'            )        );
+		add_filter( 'manage_edit-knowledgebase_item_columns', array( $this, 'edit_knowledgebase_item_columns' ) );
+
+		add_action( 'manage_knowledgebase_item_posts_custom_column',  array( $this, 'manage_knowledgebase_item_columns' ), 10, 2 );
+
 	}
 
 	/**
@@ -50,6 +61,27 @@ final class KBP_Knowledgebase_Admin {
 			add_action( 'admin_head',            array( $this, 'print_styles'  ) );
 		}
 	}
+
+	function edit_metaboxes() {
+
+		remove_meta_box('pageparentdiv', 'knowledgebase_item', 'side');
+
+		add_meta_box('pageparentdiv', __('Item Order', 'sliders'), 'page_attributes_meta_box', 'knowledgebase_item', 'side', 'low');
+
+	}
+
+	function column_order() {
+		if ( is_admin() ) {
+
+			$post_type = array_key_exists( 'post_type', $wp_query->query ) ? $wp_query->query['post_type'] : '';
+
+			if ( $post_type == 'knowledgebase_item' ) {
+				$wp_query->set('orderby', 'menu_order');
+				$wp_query->set('order', 'ASC');
+			}
+		}
+	}
+
 
 	/**
 	 * Filter on the 'request' hook to change the 'order' and 'orderby' query variables when
@@ -131,15 +163,37 @@ final class KBP_Knowledgebase_Admin {
 		$taxonomies = array_filter( $taxonomies, 'taxonomy_exists' );
 
 		/* Loop through each taxonomy and add it as a column. */
-		foreach ( $taxonomies as $taxonomy )
+		foreach ( $taxonomies as $taxonomy ) {
 			$columns[ 'taxonomy-' . $taxonomy ] = get_taxonomy( $taxonomy )->labels->name;
+		}
 
 		/* Add the comments column. */
-		if ( !empty( $post_columns['comments'] ) )
+		if ( !empty( $post_columns['comments'] ) ) {
 			$columns['comments'] = $post_columns['comments'];
+		}
+
+		$columns['order'] = __( 'Order', 'knowledgebase' );
 
 		/* Return the columns. */
 		return $columns;
+	}
+
+	public function manage_knowledgebase_item_columns( $column, $post_id ) {
+		global $post;
+
+		/* Get the post edit link for the post. */
+		$edit_link = get_edit_post_link( $post->ID );
+
+		switch( $column ) {
+
+			case 'order' :
+
+				echo '<a href="' . $edit_link . '">' . $post->menu_order . '</a>';
+
+			/* Just break out of the switch statement for everything else. */
+			default :
+				break;
+		}
 	}
 
 
