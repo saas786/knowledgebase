@@ -4,7 +4,7 @@
  * Plugin Name: SAAS Knowledgebase
  * Plugin URI: http://hybopressthemes.com
  * Description: A base plugin for building knowledgebase Web sites.
- * Version: 0.7.0
+ * Version: 0.7.1
  * Author: Syed Abrar Ahmed Shah
  * Author URI: http://hybopressthemes.com
  * Text Domain: knowledgebase
@@ -96,6 +96,9 @@ final class Knowledgebase {
 
 		/* Set constant path to the plugin URI. */
 		define( 'KNOWLEDGEBASE_URI', trailingslashit( plugin_dir_url( __FILE__ ) ) );
+
+		define( 'KNOWLEDGEBASE_FILE', plugin_basename( __FILE__ ) );
+
 	}
 
 	/**

@@ -28,6 +28,8 @@ final class KBP_Knowledgebase_Admin {
 	 */
 	public function __construct() {
 
+		add_filter( 'plugin_action_links', array( $this, 'action_links' ), 10, 2 );
+
 		/* Only run our customization on the 'edit.php' page in the admin. */
 		add_action( 'load-edit.php', array( $this, 'load_edit' ) );
 
@@ -37,13 +39,21 @@ final class KBP_Knowledgebase_Admin {
 		/* Order the knowledgebase items by the 'order' attribute in the 'all_items' column view. */
 		add_filter( 'pre_get_posts', array( $this, 'column_order' ) );
 
-
 		/* Modify the columns on the "menu items" screen. */
 		add_filter( 'manage_edit-knowledgebase_item_columns', array( $this, 'edit_knowledgebase_item_columns' ) );
 
 		add_action( 'manage_knowledgebase_item_posts_custom_column',  array( $this, 'manage_knowledgebase_item_columns' ), 10, 2 );
 
 	}
+
+	public function action_links( $links, $file ) {
+		if ( $file == KNOWLEDGEBASE_FILE ) {
+			$kb_links = '<a href="'. get_admin_url() .'edit.php?post_type=knowledgebase_item&page=knowledgebase-settings">'. __( 'Settings', 'knowledgebase' ) .'</a>';
+			array_unshift( $links, $kb_links );
+		}
+		return $links;
+	}
+
 
 	/**
 	 * Adds a custom filter on 'request' when viewing the edit menu items screen in the admin.
