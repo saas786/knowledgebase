@@ -81,17 +81,17 @@ final class KBP_Knowledgebase_Admin {
 	}
 
 	function column_order() {
-		if ( is_admin() ) {
+		global $wp_query;
 
-			$post_type = array_key_exists( 'post_type', $wp_query->query ) ? $wp_query->query['post_type'] : '';
+		if ( is_admin() && isset( $wp_query->query )) {
+            $post_type = array_key_exists( 'post_type', $wp_query->query ) ? $wp_query->query['post_type'] : '';
 
-			if ( $post_type == 'knowledgebase_item' ) {
-				$wp_query->set('orderby', 'menu_order');
-				$wp_query->set('order', 'ASC');
-			}
+            if ( $post_type == 'knowledgebase_item' ) {
+                $wp_query->set('orderby', 'menu_order');
+                $wp_query->set('order', 'ASC');
+            }
 		}
 	}
-
 
 	/**
 	 * Filter on the 'request' hook to change the 'order' and 'orderby' query variables when
@@ -104,7 +104,6 @@ final class KBP_Knowledgebase_Admin {
 	 * @return array
 	 */
 	public function request( $vars ) {
-
 		/* Default ordering alphabetically. */
 		if ( !isset( $vars['order'] ) && !isset( $vars['orderby'] ) ) {
 			$vars = array_merge(

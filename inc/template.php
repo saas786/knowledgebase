@@ -15,8 +15,10 @@
  * @return bool
  */
 function kbp_is_knowledgebase() {
-
-	if ( is_singular( 'knowledgebase_item' ) || is_post_type_archive( 'knowledgebase_item' ) || is_tax( 'knowledgebase_tag' )  || is_tax( 'knowledgebase_category' ) ) {
+	if ( is_singular( 'knowledgebase_item' )
+        || kbp_is_knowledgebase_archive()
+        || kbp_is_knowledgebase_tax()
+    ) {
 		$is_knowledgebase_page = true;
 	} else {
 		$is_knowledgebase_page = false;
@@ -33,7 +35,6 @@ function kbp_is_knowledgebase() {
  * @return bool
  */
 function kbp_is_knowledgebase_archive() {
-
 	if ( is_post_type_archive( 'knowledgebase_item' ) ) {
 		$is_knowledgebase_archive_page = true;
 	} else {
@@ -52,7 +53,6 @@ function kbp_is_knowledgebase_archive() {
  * @return bool
  */
 function kbp_is_knowledgebase_tax() {
-
 	if ( is_tax( 'knowledgebase_tag' ) || is_tax( 'knowledgebase_category' ) ) {
 		$is_knowledgebase_tax_page = true;
 	} else {
@@ -71,7 +71,6 @@ function kbp_is_knowledgebase_tax() {
  * @return bool
  */
 function kbp_is_knowledgebase_single() {
-
 	if ( is_singular( 'knowledgebase_item' ) ) {
 		$is_knowledgebase_single_page = true;
 	} else {
