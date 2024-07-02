@@ -1,0 +1,24 @@
+{
+    "name": "hbp/knowledgebase",
+    "description": "A knowledgebase plugin.",
+    "type": "wordpress-plugin",
+    "keywords": [
+        "knowledgebase",
+        "wordpress"
+    ],
+    "homepage": "https://github.com/saas786/knowledegebase",
+    "license": "GPL-2.0+",
+    "authors": [
+        {
+            "name": "Hybopress Themes",
+            "email": "support@hybopressthemes.com",
+            "homepage": "https://hybopressthemes.com"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/saas786/knowledegebase/issues"
+    },
+    "require": {
+        "composer/installers": "~1.0"
+    }
+}
